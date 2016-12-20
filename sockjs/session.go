@@ -5,6 +5,7 @@ import (
 	"errors"
 	"io"
 	"net/http"
+	"reflect"
 	"sync"
 	"time"
 )
@@ -221,6 +222,8 @@ func (s *session) Send(msg string) error {
 }
 
 func (s *session) ID() string { return s.id }
+
+func (s *session) Payload() string { return reflect.ValueOf(s.recv).Elem().Type().String() }
 
 func (s *session) GetSessionState() SessionState {
 	s.RLock()

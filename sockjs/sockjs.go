@@ -8,6 +8,8 @@ type Session interface {
 	ID() string
 	// Request returns the first http request
 	Request() *http.Request
+	// Protocol the session receiver is using
+	Protocol() string
 	// Recv reads one text frame from session
 	Recv() (string, error)
 	// Send sends one text frame to session
